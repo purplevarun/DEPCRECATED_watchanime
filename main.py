@@ -3,19 +3,15 @@
 
 import requests
 from bs4 import BeautifulSoup
-
-RedColor     = "\033[1;31m"
-GreenColor   = "\033[1;32m"
-YellowColor  = "\033[1;33m"
-BlueColor    = "\033[1;34m"
-WhiteColor   = "\u001b[37m"
+from importlib import import_module
+import colors
 def showHelp():
-    print (GreenColor + "Welcome to purpleanime CLI")
-    print (YellowColor + "Instructions :")
+    print (colors.Green + "Welcome to purpleanime CLI")
+    print (colors.Yellow + "Instructions :")
     print ("1) For help, use -h")
     print ("2) To specify anime, use -n")
-    print (BlueColor + "Example : purpleanime -n attack on titan")
-    print (WhiteColor, end="")
+    print (colors.Blue + "Example : purpleanime -n attack on titan")
+    print (colors.White, end="")
 
 def extractName(args):
     name = ""
@@ -58,12 +54,13 @@ def onigiri ():
     if "-n" in arguments:
         NAME = extractName(arguments)
     else :
-        NAME = input(GreenColor + "Enter Name of Anime : " + WhiteColor)
+        NAME = input(colors.Green + "Enter Name of Anime : " + colors.White)
 
     # now we have the name of the anime
 
     AnimeResults = getAnimeList(NAME)
     numOfAnimeResults = len (AnimeResults)
-    
+    print ('there were {} results'.format(numOfAnimeResults))
+    print (AnimeResults)
 
 if __name__ == '__main__': onigiri()

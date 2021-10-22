@@ -1,7 +1,8 @@
 # -h for help
 # -n for name
 import colors, extract
-import os
+import os, sys
+player = "mpv.exe"
 def showHelp():
     print (colors.Green + "Welcome to purpleanime CLI")
     print (colors.Yellow + "Instructions :")
@@ -11,7 +12,6 @@ def showHelp():
     print (colors.White, end="")
     
 def onigiri ():
-    import sys
     arguments = sys.argv
     numOfArguments = len (sys.argv) - 1
     filename = arguments[0]
@@ -53,7 +53,8 @@ def onigiri ():
     
     embeddedLink = extract.getLink(selectedAnime, selectedEpisode)
     videoLink = extract.getVideoLink (embeddedLink, QUALITY)
-    os.system(' \
-        mpv.exe --http-header-fields="Referrer: {}" "{}" \
-    '.format(embeddedLink, videoLink))
+    
+    command = '{} --http-header-fields="Referer: {}" "{}"'.format(player,embeddedLink,videoLink)
+    os.system(command)
+    
 if __name__ == '__main__': onigiri()

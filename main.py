@@ -30,7 +30,8 @@ if "-n" in arguments:
     if foundAnime:
         pass
     else :
-        print ("Sorry, this anime could not be found")
+        print (RedColor + "Sorry, this anime could not be found")
         exit (-1)
 else :
-    NAME = input("Enter Name of Anime : ")
+    NAME = input(GreenColor + "Enter Name of Anime : " + WhiteColor)
+    exit(-1)

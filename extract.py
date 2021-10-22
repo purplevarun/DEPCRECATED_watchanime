@@ -22,7 +22,11 @@ def getAnimeList (NAME):
     Animes = []
     for i in namesInHTML:
         x = i.find("a")
-        title = x.get('title')
+        # print (x)
+        title = x.get('href')
+        title = list (title)
+        title = title[10:]
+        title = ''.join(title)
         Animes.append(title)
     return Animes
 

@@ -47,3 +47,17 @@ def getEpCountOfSelectedAnime(anime):
     eplist = soup.find("a", class_="active")
     start, end = eplist.get("ep_start"), eplist.get("ep_end")
     return start, end
+
+def getLink (anime, ep):
+    url = "https://gogoanime.vc/{}-episode-{}".format(anime, ep)
+    res = requests.get(url)
+    soup = BeautifulSoup(res.content,'html5lib')
+    stuff = soup.find("a", class_="active")
+    limk = stuff.get('data-video')
+    # print (limk) dis is da sauce, not the limk
+    res = requests.get("https:"+limk)
+    soup = BeautifulSoup(res.content,'html5lib')
+    links = soup.findAll("li", class_="linkserver")
+    link = links[1]
+    limk = link.get("data-video")
+    print (limk)

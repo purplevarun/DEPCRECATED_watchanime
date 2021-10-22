@@ -48,5 +48,10 @@ def onigiri ():
 
     startEp, endEp = extract.getEpCountOfSelectedAnime(selectedAnime)
 
-    print (colors.Magenta + 'Select episode number between 1 and {}'.format(endEp) + colors.White)
+    try :
+        selectedEpisode = int (input (colors.Magenta + 'Select episode number between 1 and {} : '.format(endEp) + colors.White))
+    except:
+        print (colors.Red + "Episode Number has to be a NUMBER" + colors.White); exit(-1)
+    
+    videoLink = extract.getLink(selectedAnime, selectedEpisode)
 if __name__ == '__main__': onigiri()

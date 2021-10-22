@@ -23,6 +23,8 @@ def getAnimeList (NAME):
     for i in namesInHTML:
         x = i.find("a")
         # print (x)
+        # basically not extracting the title but the href stuff
+        # for routing, ofcourse 😉
         title = x.get('href')
         title = list (title)
         title = title[10:]
@@ -37,3 +39,11 @@ def getIndexDict (animes):
         dp[count] = i
         count += 1
     return dp
+
+def getEpCountOfSelectedAnime(anime):
+    url = "https://gogoanime.vc/category/" + anime
+    res = requests.get(url)
+    soup = BeautifulSoup(res.content,'html5lib')
+    eplist = soup.find("a", class_="active")
+    start, end = eplist.get("ep_start"), eplist.get("ep_end")
+    return start, end

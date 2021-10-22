@@ -46,5 +46,7 @@ def onigiri ():
     
     selectedAnime = dp[query]
 
-    
+    startEp, endEp = extract.getEpCountOfSelectedAnime(selectedAnime)
+
+    print (colors.Magenta + 'Select episode number between 1 and {}'.format(endEp) + colors.White)
 if __name__ == '__main__': onigiri()

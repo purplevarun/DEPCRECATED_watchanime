@@ -60,4 +60,10 @@ def getLink (anime, ep):
     links = soup.findAll("li", class_="linkserver")
     link = links[1]
     limk = link.get("data-video")
-    print (limk)
+    return limk
+
+def getVideoLink(embeddedLink):
+    res = requests.get(embeddedLink)
+    soup = BeautifulSoup(res.content, 'html4lib')
+    stuff = soup.find("script", type_="text/JavaScript")
+    print (stuff)

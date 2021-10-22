@@ -53,5 +53,6 @@ def onigiri ():
     except:
         print (colors.Red + "Episode Number has to be a NUMBER" + colors.White); exit(-1)
     
-    videoLink = extract.getLink(selectedAnime, selectedEpisode)
+    embeddedLink = extract.getLink(selectedAnime, selectedEpisode)
+    videoLink = extract.getVideoLink (embeddedLink)
 if __name__ == '__main__': onigiri()

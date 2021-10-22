@@ -62,8 +62,12 @@ def getLink (anime, ep):
     limk = link.get("data-video")
     return limk
 
-def getVideoLink(embeddedLink):
+def getVideoLink(embeddedLink, qual):
     res = requests.get(embeddedLink)
-    soup = BeautifulSoup(res.content, 'html4lib')
-    stuff = soup.find("script", type_="text/JavaScript")
-    print (stuff)
+    soup = BeautifulSoup(res.content, 'html5lib')
+    stuff = soup.find("div", class_="videocontent")
+    stuff = str (stuff)
+    start = stuff.index("https://")
+    end =  stuff.index("m3u8")
+    link = stuff[start:end] + str(qual) + ".m3u8"
+    print (link)

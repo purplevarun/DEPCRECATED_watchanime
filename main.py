@@ -19,7 +19,7 @@ def onigiri ():
     filename = arguments[0]
     arguments = arguments[1:]
     NAME = None
-
+    QUALITY = 720
     if "-h" in arguments:
         showHelp()
         exit(-1)
@@ -54,5 +54,5 @@ def onigiri ():
         print (colors.Red + "Episode Number has to be a NUMBER" + colors.White); exit(-1)
     
     embeddedLink = extract.getLink(selectedAnime, selectedEpisode)
-    videoLink = extract.getVideoLink (embeddedLink)
+    videoLink = extract.getVideoLink (embeddedLink, QUALITY)
 if __name__ == '__main__': onigiri()

@@ -1,6 +1,9 @@
 # -h for help
 # -n for name
 
+import requests
+from bs4 import BeautifulSoup
+
 RedColor     = "\033[1;31m"
 GreenColor   = "\033[1;32m"
 YellowColor  = "\033[1;33m"
@@ -25,6 +28,21 @@ def extractName(args):
             name = name + i + " "
     return name
 
+def getAnimeList (NAME):
+    NAME = NAME.rstrip()
+    NAME = NAME.lstrip()
+    NAME = NAME.replace(" ", "%20")
+    searchUrl = "https://gogoanime.vc//search.html?keyword={}".format(NAME)
+    searchResponse = requests.get(searchUrl)
+    soup = BeautifulSoup (searchResponse.content, 'html5lib')
+    namesInHTML = soup.findAll("p", class_="name")
+    Animes = []
+    for i in namesInHTML:
+        x = i.find("a")
+        title = x.get('title')
+        Animes.append(title)
+    return Animes
+    
 def onigiri ():
     import sys
     arguments = sys.argv
@@ -42,5 +60,10 @@ def onigiri ():
     else :
         NAME = input(GreenColor + "Enter Name of Anime : " + WhiteColor)
 
-   
+    # now we have the name of the anime
+
+    AnimeResults = getAnimeList(NAME)
+    numOfAnimeResults = len (AnimeResults)
+    
+
 if __name__ == '__main__': onigiri()

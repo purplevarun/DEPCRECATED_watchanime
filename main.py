@@ -39,5 +39,12 @@ def onigiri ():
     dp = extract.getIndexDict(AnimeResults)
     for i, j in dp.items():
         print (colors.Yellow + str(i) + " " + colors.Green + j + colors.White)
+    try :
+        query = int (input (colors.Blue + "Choose Anime : " + colors.White))
+    except:
+        print (colors.Red + "Please choose the index of the Anime"); exit(-1)
+    
+    selectedAnime = dp[query]
+
     
 if __name__ == '__main__': onigiri()

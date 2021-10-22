@@ -70,4 +70,4 @@ def getVideoLink(embeddedLink, qual):
     start = stuff.index("https://")
     end =  stuff.index("m3u8")
     link = stuff[start:end] + str(qual) + ".m3u8"
-    print (link)
+    return link

@@ -1,9 +1,7 @@
 # -h for help
 # -n for name
-
-import requests
-from bs4 import BeautifulSoup
 import colors, extract
+import os
 def showHelp():
     print (colors.Green + "Welcome to purpleanime CLI")
     print (colors.Yellow + "Instructions :")
@@ -55,4 +53,7 @@ def onigiri ():
     
     embeddedLink = extract.getLink(selectedAnime, selectedEpisode)
     videoLink = extract.getVideoLink (embeddedLink, QUALITY)
+    os.system(' \
+        mpv.exe --http-header-fields="Referrer: {}" "{}" \
+    '.format(embeddedLink, videoLink))
 if __name__ == '__main__': onigiri()

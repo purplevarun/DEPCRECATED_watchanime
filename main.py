@@ -36,6 +36,8 @@ def onigiri ():
     if (numOfAnimeResults == 0) : 
         print (colors.Red+'There are {} results for your search'.format(numOfAnimeResults))
         exit (-1)
-    
+    dp = extract.getIndexDict(AnimeResults)
+    for i, j in dp.items():
+        print (colors.Yellow + str(i) + " " + colors.Green + j + colors.White)
     
 if __name__ == '__main__': onigiri()

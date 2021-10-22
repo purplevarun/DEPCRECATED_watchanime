@@ -25,3 +25,11 @@ def getAnimeList (NAME):
         title = x.get('title')
         Animes.append(title)
     return Animes
+
+def getIndexDict (animes):
+    count = 1
+    dp = {}
+    for i in animes:
+        dp[count] = i
+        count += 1
+    return dp

@@ -33,7 +33,9 @@ def onigiri ():
 
     AnimeResults = extract.getAnimeList(NAME)
     numOfAnimeResults = len (AnimeResults)
-    print ('there were {} results'.format(numOfAnimeResults))
-    print (AnimeResults)
-
+    if (numOfAnimeResults == 0) : 
+        print (colors.Red+'There are {} results for your search'.format(numOfAnimeResults))
+        exit (-1)
+    
+    
 if __name__ == '__main__': onigiri()

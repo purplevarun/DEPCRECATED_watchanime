@@ -13,25 +13,34 @@ def showHelp():
     print ("2) To specify anime, use -n")
     print (BlueColor + "Example : purpleanime -n attack on titan")
     print (WhiteColor, end="")
-import sys
-arguments = sys.argv
-numOfArguments = len (sys.argv) - 1
-filename = arguments[0]
-arguments = arguments[1:]
-NAME = None
 
-if "-h" in arguments:
-    showHelp()
-    exit(-1)
+def extractName(args):
+    name = ""
+    start = False
+    for i in args:
+        if i == '-n' :
+            start = True
+            continue
+        if start :
+            name = name + i + " "
+    return name
 
-if "-n" in arguments:
-    NAME = extractName(arguments)
-    foundAnime = findAnime(NAME)
-    if foundAnime:
-        pass
+def onigiri ():
+    import sys
+    arguments = sys.argv
+    numOfArguments = len (sys.argv) - 1
+    filename = arguments[0]
+    arguments = arguments[1:]
+    NAME = None
+
+    if "-h" in arguments:
+        showHelp()
+        exit(-1)
+
+    if "-n" in arguments:
+        NAME = extractName(arguments)
     else :
-        print (RedColor + "Sorry, this anime could not be found")
-        exit (-1)
-else :
-    NAME = input(GreenColor + "Enter Name of Anime : " + WhiteColor)
-    exit(-1)
+        NAME = input(GreenColor + "Enter Name of Anime : " + WhiteColor)
+
+   
+if __name__ == '__main__': onigiri()

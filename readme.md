@@ -19,6 +19,4 @@
     1. Install mpv via sudo apt install mpv -y
     2. Run using : python main.py linux -n [name of anime]
 
-### Made by - Varun Kedia (23/10/2021)
-
 ### Inspired from pystardust/ani-cli

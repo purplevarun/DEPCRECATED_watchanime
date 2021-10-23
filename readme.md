@@ -17,12 +17,11 @@
     3> Install mpv player
         https://udomain.dl.sourceforge.net/project/mpv-player-windows/64bit/mpv-x86_64-20211017-git-e13fe12.7z
         Download mpv player from the link and ADD TO PATH
-    4> purpleanime -n [anime name]
-    Example : purpleanime -n attack of titan
+    4> purpleanime
 
 # Linux Users
 
     1> Install python
     2> pip install -r rqr.txt
     3> Install mpv player : sudo apt install mpv -y
-    4> python3 linux_main.py
+    4> python3 main.py

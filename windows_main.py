@@ -2,14 +2,14 @@
 # -n for name
 import colors, extract
 import os, sys
-player = "mpv"
+player = "mpv.exe"
 def showHelp():
-    print (colors.Green + "Welcome to purpleanime CLI")
-    print (colors.Yellow + "Instructions :")
+    print ("Welcome to purpleanime CLI")
+    print ("Instructions :")
     print ("1) For help, use -h")
     print ("2) To specify anime, use -n")
-    print (colors.Blue + "Example : purpleanime -n attack on titan")
-    print (colors.White, end="")
+    print ("Example : purpleanime -n attack on titan")
+    
     
 def onigiri ():
     arguments = sys.argv
@@ -25,31 +25,31 @@ def onigiri ():
     if "-n" in arguments:
         NAME = extract.extractName(arguments)
     else :
-        NAME = input(colors.Green + "Enter Name of Anime : " + colors.White)
+        NAME = input("Enter Name of Anime : " )
 
     # now we have the name of the anime
 
     AnimeResults = extract.getAnimeList(NAME)
     numOfAnimeResults = len (AnimeResults)
     if (numOfAnimeResults == 0) : 
-        print (colors.Red+'There are {} results for your search'.format(numOfAnimeResults))
+        print ('There are {} results for your search'.format(numOfAnimeResults))
         exit (-1)
     dp = extract.getIndexDict(AnimeResults)
     for i, j in dp.items():
-        print (colors.Yellow + str(i) + " " + colors.Green + j + colors.White)
+        print (str(i) + " "+ j)
     try :
-        query = int (input (colors.Blue + "Choose Anime : " + colors.White))
+        query = int (input ("Choose Anime : "))
     except:
-        print (colors.Red + "Please choose the index of the Anime"); exit(-1)
+        print ("Please choose the index of the Anime"); exit(-1)
     
     selectedAnime = dp[query]
 
     startEp, endEp = extract.getEpCountOfSelectedAnime(selectedAnime)
 
     try :
-        selectedEpisode = int (input (colors.Magenta + 'Select episode number between 1 and {} : '.format(endEp) + colors.White))
+        selectedEpisode = int (input ('Select episode number between 1 and {} : '.format(endEp)))
     except:
-        print (colors.Red + "Episode Number has to be a NUMBER" + colors.White); exit(-1)
+        print ("Episode Number has to be a NUMBER"); exit(-1)
     
     embeddedLink = extract.getLink(selectedAnime, selectedEpisode)
     videoLink = extract.getVideoLink (embeddedLink, QUALITY)

@@ -1,0 +1,4 @@
+pip
+html5
+bs4
+requests

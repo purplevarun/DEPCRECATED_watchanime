@@ -1,5 +1,5 @@
 all :
-	git clone https://github.com/purplevarun/purpleanime-CLI.git
-	cd purpleanime-CLI
-	sudo apt install python3-pip
+
+	sudo apt install python3 python3-pip -y
 	pip install --upgrade pip requests bs4 html5lib
+	

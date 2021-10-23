@@ -2,7 +2,7 @@
 # -n for name
 import colors, extract
 import os, sys
-player = "mpv.exe"
+player = "mpv.com"
 def showHelp():
     print ("Welcome to purpleanime CLI")
     print ("Instructions :")

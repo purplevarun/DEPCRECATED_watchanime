@@ -2,7 +2,6 @@
 # -n for name
 import colors, extract
 import os, sys
-player = "mpv.com"
 def showHelp():
     print (colors.Green + "Welcome to purpleanime CLI")
     print (colors.Yellow + "Instructions :")
@@ -12,6 +11,7 @@ def showHelp():
     print (colors.White, end="")
     
 def onigiri ():
+    player = "mpv.com"
     arguments = sys.argv
     numOfArguments = len (sys.argv) - 1
     filename = arguments[0]

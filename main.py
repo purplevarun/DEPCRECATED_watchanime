@@ -18,6 +18,10 @@ def onigiri ():
     arguments = arguments[1:]
     NAME = None
     QUALITY = 720
+    
+    if "linux" in arguments:
+        player = "mpv"
+
     if "-h" in arguments:
         showHelp()
         exit(-1)

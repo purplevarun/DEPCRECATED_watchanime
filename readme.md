@@ -27,7 +27,10 @@
     4> python3 main.py
 
 ## Features
+
     python main.py -h # help
     python main.py -n [name of anime]
-Made by - Varun Kedia (23/10/2021)
-Inspired from pystardust/ani-cli
+
+### Made by - Varun Kedia (23/10/2021)
+
+### Inspired from pystardust/ani-cli

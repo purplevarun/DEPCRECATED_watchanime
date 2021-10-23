@@ -25,3 +25,6 @@
     2> pip install -r rqr.txt
     3> Install mpv player : sudo apt install mpv -y
     4> python3 main.py
+
+Made by - Varun Kedia (23/10/2021)
+Inspired from pystardust/ani-cli

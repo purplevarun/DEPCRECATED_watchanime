@@ -21,7 +21,7 @@
 
 # Linux Users
 
-    1> Install python
+    1> Install python3-pip : sudo apt install python3-pip -y
     2> pip install -r rqr.txt
     3> Install mpv player : sudo apt install mpv -y
     4> python3 main.py

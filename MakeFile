@@ -1,5 +1,0 @@
-all :
-
-	sudo apt install python3 python3-pip -y
-	pip install --upgrade pip requests bs4 html5lib
-	

@@ -1,1 +1,1 @@
-python "source/main.py"
+python "main.py"

@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import sys, os
+import sys, os, re
 from random import randint
 
 RED     = "\u001b[31;1m"
@@ -53,7 +53,7 @@ def getChoice(Names)->str:
     
     return dp[ch]
 
-def getEpisode(Name):
+def getEpisode(Name)->int:
     response = requests.get('https://gogoanime.vc//category/{}'.format(Name))
     soup = BeautifulSoup (response.content, "html5lib")
     soup = soup.find ("a", class_="active")
@@ -64,6 +64,20 @@ def getEpisode(Name):
         killProgram()
     if episode <= 0 or episode > maxEpisodes: killProgram()
     return episode
+
+def getQualities (link):
+    res = requests.get(link)
+    soup = BeautifulSoup(res.content, "html5lib")
+
+
+def getEmbeddedLink(Name, Ep):
+    url = f'https://gogoanime.vc/{Name}-episode-{Ep}'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.content, "html5lib")
+    soup = soup.findChild("li", class_="dowloads")
+    soup = str (soup)
+    link1 = soup[soup.index("https://") : soup.index('" target=')]
+    getQualities(link1)
 
 def main(): 
     Name = ""
@@ -77,6 +91,7 @@ def main():
     choice = getChoice (Possibilities)
     #
     episode = getEpisode(choice)
-
+    #
+    embeddedLink = getEmbeddedLink (choice, episode)
 if __name__ == '__main__': 
     main()

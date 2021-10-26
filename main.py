@@ -59,7 +59,7 @@ def getEpisode(Name)->int:
     soup = soup.find ("a", class_="active")
     maxEpisodes = int (soup.get("ep_end"))
     try:
-        episode = int (input ("Select Episode [{}]:".format(soup.text)))
+        episode = int (input ("{}Select Episode {}[{}]:".format(BLUE,WHITE,f"1-{soup.get('ep_end')}")))
     except:
         killProgram()
     if episode <= 0 or episode > maxEpisodes: killProgram()
@@ -68,7 +68,32 @@ def getEpisode(Name)->int:
 def getQualities (link):
     res = requests.get(link)
     soup = BeautifulSoup(res.content, "html5lib")
+    soup = soup.findAll ("div", class_="dowload")
+    q = []
+    for i in soup:
+        i = str (i)
+        if "360P - mp4" in i: q.append(360)
+        if "480P - mp4" in i: q.append(480)
+        if "720P - mp4" in i: q.append(720)
+        if "1080P - mp4" in i: q.append(1080)
+    return q
 
+def selectQuality (link):
+    quals = getQualities (link)
+    dp = {}
+    c = 1
+    txt = GREEN + "Available Qualities " + WHITE + "="
+    for i in quals:
+        dp[c] = i
+        txt = txt + " " + MAGENTA + str (c) + WHITE + ". " + str(i) + " " + WHITE
+        c += 1
+    print (txt)
+    try :
+        q = int (input ("Select Quality = "))
+    except:
+        killProgram()
+    if q <= 0 or q > len (dp): killProgram()
+    return dp[q]
 
 def getEmbeddedLink(Name, Ep):
     url = f'https://gogoanime.vc/{Name}-episode-{Ep}'
@@ -77,8 +102,8 @@ def getEmbeddedLink(Name, Ep):
     soup = soup.findChild("li", class_="dowloads")
     soup = str (soup)
     link1 = soup[soup.index("https://") : soup.index('" target=')]
-    getQualities(link1)
-
+    qual = selectQuality(link1)
+    
 def main(): 
     Name = ""
     args = sys.argv

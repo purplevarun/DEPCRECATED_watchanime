@@ -1,5 +1,6 @@
 @echo off
 echo Welcome to Watch Anime ! by Varun Kedia && ^
+echo Visit - https://github.com/purplevarun/watchanime && ^
 echo Press enter to Watch Anime ! && ^
 echo Consider starring the repo if you like this application ! && ^
 pause && ^

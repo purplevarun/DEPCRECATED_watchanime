@@ -152,6 +152,7 @@ def main():
         else : killProgram()
     print ("You have completed watching {}".format(choice))
     print ("If you like the app, please star it on github !")
+    print ("Visit - https://github.com/purplevarun/watchanime")
     c = input("Press any key to exit")
 if __name__ == '__main__': 
     main()

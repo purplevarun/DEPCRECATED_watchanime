@@ -141,7 +141,7 @@ def main():
     #
     embedded, main = getEmbeddedLink (choice, episode)
     cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
-    os.system(cmd)
     print ("Your Anime is starting.....")
+    os.system(cmd)
 if __name__ == '__main__': 
     main()

@@ -11,6 +11,14 @@ MAGENTA = "\u001b[35;1m"
 YELLOW  = "\u001b[33;1m"
 CYAN    = "\u001b[36;1m"
 
+RED     = ""
+GREEN   = ""
+WHITE   = ""
+BLUE    = ""
+MAGENTA = ""
+YELLOW  = ""
+CYAN    = ""
+
 def getRandomColor(): # get random color
     colors = [GREEN, BLUE, MAGENTA, YELLOW, CYAN]
     l = len (colors)

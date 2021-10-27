@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import sys, os, re
+import sys, os
 from random import randint
 
 RED     = "\u001b[31;1m"
@@ -136,9 +136,7 @@ def main():
     episode = getEpisode(choice)
     #
     embedded, main = getEmbeddedLink (choice, episode)
-    print (f"emebedded={embedded} \nmain={main}")
     cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
-    print (cmd)
     os.system(cmd)
 if __name__ == '__main__': 
     main()

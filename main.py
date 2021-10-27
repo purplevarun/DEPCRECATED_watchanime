@@ -123,11 +123,7 @@ def getEmbeddedLink(Name, Ep):
     main = stuff
     return embedded, main
 def main(): 
-    Name = ""
-    args = sys.argv
-    if len (args) <= 1: killProgram()
-    for i in range (1, len(args)):
-        Name += args[i] + " "
+    Name = input (GREEN+"Enter Name of Anime : "+WHITE)
     #
     Possibilities = getNames(Name)
     #

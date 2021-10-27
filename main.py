@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import sys, os
+import os
 from random import randint
 
 RED     = "\u001b[31;1m"
@@ -130,12 +130,15 @@ def getEmbeddedLink(Name, Ep):
     stuff = stuff + str(qual) + ".m3u8"
     main = stuff
     return embedded, main
-def main(): 
+def storeInHistory(anime):
+    os.system(f"echo {anime} >> history.txt")
+def main():
     Name = input (GREEN+"Enter Name of Anime : "+WHITE)
     #
     Possibilities = getNames(Name)
     #
     choice = getChoice (Possibilities)
+    storeInHistory(choice)
     #
     episode, maxepisodes = getEpisode(choice)
     #
@@ -149,10 +152,10 @@ def main():
         print ("To exit, press e")
         opt = input ()
         if opt == "n": episode += 1; continue
-        else : killProgram()
-    print ("You have completed watching {}".format(choice))
+        else : break
+    print ("You have completed watching {} episode {}".format(choice,max(episode,maxepisodes)))
     print ("If you like the app, please star it on github !")
     print ("Visit - https://github.com/purplevarun/watchanime")
-    c = input("Press any key to exit")
+    input("Press any key to exit")
 if __name__ == '__main__': 
     main()

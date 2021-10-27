@@ -26,11 +26,7 @@
 
     1>Download or Clone the repository
 
-    2>Open CMD or Windows Terminal(recommended) in this directory
-
-    3>Now just type the command below to watch anime (1 minute installation time)
-
-    4>watchanime
+    2>Open the folder and Click on watchanime !
 
 ### Made by Varun Kedia
 

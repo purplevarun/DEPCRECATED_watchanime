@@ -11,9 +11,9 @@ MAGENTA = "\u001b[35;1m"
 YELLOW  = "\u001b[33;1m"
 CYAN    = "\u001b[36;1m"
 
-RED     = "\x1b[31m"
-GREEN   = "\x1b[32m"
-WHITE   = "\x1b[37m"
+RED     = ""
+GREEN   = ""
+WHITE   = ""
 BLUE    = ""
 MAGENTA = ""
 YELLOW  = ""
@@ -143,13 +143,15 @@ def main():
         embedded, main = getEmbeddedLink (choice, episode)
         cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
         print ("Your Anime is starting.....")
-        print (f"Currently Playing : {choice} episode number {episode}")
+        print (f"Currently Playing : {choice} episode {episode}")
         os.system(cmd)
         print ("To watch the next episode, press n")
         print ("To exit, press e")
         opt = input ()
         if opt == "n": episode += 1; continue
         else : killProgram()
-    input()
+    print ("You have completed watching {}".format(choice))
+    print ("If you like the app, please star it on github !")
+    c = input("Press any key to exit")
 if __name__ == '__main__': 
     main()

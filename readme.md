@@ -26,11 +26,15 @@
 
     1>Download or Clone the repository
 
-    2>Open CMD or Windows Terminal(recommended) in this directory
+    2>Extract mpv.7z in the SAME Folder
 
-    3>Now just type the command below to watch anime
+(After extraction, your folder structure should look like <a href="imgs/s5.png">this</a>)
 
-    4>watchanime [name of the anime]
+    3>Open CMD or Windows Terminal(recommended) in this directory
+
+    4>Now just type the command below to watch anime
+
+    5>watchanime [name of the anime]
 
     Example: watchanime attack of titan
 

@@ -4,7 +4,7 @@
 
 ## ScreenShots
 
-<img src="imgs/s1.png">
+<!--<img src="imgs/s1.png">-->
 <img src="imgs/s2.png">
 <img src="imgs/s3.png">
 <img src="imgs/s4.png">

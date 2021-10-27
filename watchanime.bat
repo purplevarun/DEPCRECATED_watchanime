@@ -16,7 +16,7 @@ echo virtual environment created.... && ^
 python -m pip install --upgrade pip bs4 requests html5lib && ^
 cls && ^
 echo watchanime was successfully installed... && ^
-echo . && ^
+echo. && ^
 python main.py %* && ^
 deactivate && ^
 echo watchanime virtual environment deactivated
@@ -34,7 +34,7 @@ echo virtual environment created.... && ^
 python -m pip install --upgrade pip bs4 requests html5lib && ^
 cls && ^
 echo watchanime was successfully installed... && ^
-echo . && ^
+echo. && ^
 python main.py %* && ^
 deactivate && ^
 echo watchanime virtual environment deactivated

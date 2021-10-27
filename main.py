@@ -96,14 +96,32 @@ def selectQuality (link):
     return dp[q]
 
 def getEmbeddedLink(Name, Ep):
-    url = f'https://gogoanime.vc/{Name}-episode-{Ep}'
+    url = f'https://gogoanime.vc/{Name}-episode-{Ep}' # impt link
     res = requests.get(url)
     soup = BeautifulSoup(res.content, "html5lib")
     soup = soup.findChild("li", class_="dowloads")
     soup = str (soup)
-    link1 = soup[soup.index("https://") : soup.index('" target=')]
-    qual = selectQuality(link1)
-    
+    link_to_get_quality = soup[soup.index("https://") : soup.index('" target=')]
+    qual = selectQuality(link_to_get_quality) # we have the quality, the user wants
+    #
+    res = requests.get(url)
+    soup = BeautifulSoup(res.content, "html5lib")
+    soup = soup.find("li", class_="vidcdn")
+    soup = str(soup)
+    soup = soup[soup.index('data-video="//'):soup.index('" ')]
+    soup = "https:" + soup[12:]
+    soup = soup.replace("amp;","&")
+    link = soup
+    embedded = link
+    res = requests.get(link)
+    soup = BeautifulSoup(res.content, "html5lib")
+    soup = str (soup)
+    idx = soup.index ("m3u8")
+    stuff = soup[idx-150:idx]
+    stuff = stuff[stuff.index('https://'):]
+    stuff = stuff + str(qual) + ".m3u8"
+    main = stuff
+    return embedded, main
 def main(): 
     Name = ""
     args = sys.argv
@@ -117,6 +135,10 @@ def main():
     #
     episode = getEpisode(choice)
     #
-    embeddedLink = getEmbeddedLink (choice, episode)
+    embedded, main = getEmbeddedLink (choice, episode)
+    print (f"emebedded={embedded} \nmain={main}")
+    cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
+    print (cmd)
+    os.system(cmd)
 if __name__ == '__main__': 
     main()

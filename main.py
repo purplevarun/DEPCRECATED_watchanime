@@ -132,16 +132,26 @@ def getEmbeddedLink(Name, Ep):
     return embedded, main
 def storeInHistory(anime):
     os.system(f"echo {anime} >> history.txt")
-def main():
-    Name = input (GREEN+"Enter Name of Anime : "+WHITE)
-    #
-    Possibilities = getNames(Name)
-    #
-    choice = getChoice (Possibilities)
-    storeInHistory(choice)
-    #
+def chooseFromHistory (names):
+    dp = {}
+    c = 1
+    for i in names :
+        dp[c] = i
+        c+=1
+    for i, j in dp.items():
+        print (i,j)
+    try :
+        ch = int (input ("Enter choice : "))
+    except:
+        killProgram()
+    if ch <= 0 or ch >= c: killProgram()
+
+    # print ('chosen history = ', dp[ch])
+    choice = dp[ch]
+
     episode, maxepisodes = getEpisode(choice)
-    #
+
+    
     while episode <= maxepisodes :
         embedded, main = getEmbeddedLink (choice, episode)
         cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
@@ -154,6 +164,46 @@ def main():
         if opt == "n": episode += 1; continue
         else : break
     print ("You have completed watching {} episode {}".format(choice,max(episode,maxepisodes)))
+    print ("If you like the app, please star it on github !")
+    print ("Visit - https://github.com/purplevarun/watchanime")
+    input("Press any key to exit")
+    exit (0)
+
+def showHistory():
+    file = open ("history.txt", "r")
+    file = file.read()
+    file = file.split ("\n")
+    file = file[:-1]
+    file = [i.strip() for i in file]
+    ch = input ("You were already watching anime, do you want to resume ? (y/n)")
+    if ch == 'y':
+        chooseFromHistory(file)
+    else : return
+def main():
+    if os.path.exists("history.txt"):
+        showHistory()
+
+    Name = input (GREEN+"Enter Name of Anime : "+WHITE)
+    #
+    Possibilities = getNames(Name)
+    #
+    choice = getChoice (Possibilities)
+    #
+    episode, maxepisodes = getEpisode(choice)
+    storeInHistory(f"{choice}")
+    #
+    while episode <= maxepisodes :
+        embedded, main = getEmbeddedLink (choice, episode)
+        cmd = 'mpv.com --http-header-fields="Referer: {}" "{}"'.format(embedded, main)
+        print ("Your Anime is starting.....")
+        print (f"Currently Playing : {choice} episode {episode}")
+        os.system(cmd)
+        print ("To watch the next episode, press n")
+        print ("To exit, press e")
+        opt = input ()
+        if opt == "n": episode += 1; continue
+        else : break
+    print ("You have completed watching {} episode {}".format(choice,min(episode,maxepisodes)))
     print ("If you like the app, please star it on github !")
     print ("Visit - https://github.com/purplevarun/watchanime")
     input("Press any key to exit")

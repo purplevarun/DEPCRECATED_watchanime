@@ -4,15 +4,13 @@ echo Visit - https://github.com/purplevarun/watchanime && ^
 echo Press enter to Watch Anime ! && ^
 echo Consider starring the repo if you like this application ! && ^
 pause && ^
-echo installation started && ^
 if exist "installed.txt" (
 watchanime-env\scripts\activate && ^
 watchanime-env\scripts\activate && ^
 python main.py %* && ^
-pause
 exit
-)
-else (
+) else (
+echo installation started && ^
 echo hey > installed.txt && ^
 7za e mpv.7z && ^
 echo mpv player extracted successfully && ^

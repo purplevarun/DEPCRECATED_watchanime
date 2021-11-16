@@ -18,7 +18,7 @@ BLUE    = ""
 MAGENTA = ""
 YELLOW  = ""
 CYAN    = ""
-
+provider = "https://gogoanome.mc"
 def getRandomColor(): # get random color
     colors = [GREEN, BLUE, MAGENTA, YELLOW, CYAN]
     l = len (colors)
@@ -32,7 +32,7 @@ def killProgram(): # name not given
 def getNames(searchText)->list:
     searchText = str(searchText)
     searchText.replace(" ","%20")
-    response = requests.get('https://gogoanime.pe//search.html?keyword='+searchText)
+    response = requests.get(provider+'//search.html?keyword='+searchText)
     soup =  BeautifulSoup(response.content, 'html5lib')
     soup = soup.findAll("p", class_="name")
     Names = []
@@ -62,7 +62,7 @@ def getChoice(Names)->str:
     return dp[ch]
 
 def getEpisode(Name)->int:
-    response = requests.get('https://gogoanime.pe//category/{}'.format(Name))
+    response = requests.get('{}//category/{}'.format(provider,Name))
     soup = BeautifulSoup (response.content, "html5lib")
     soup = soup.find ("a", class_="active")
     maxEpisodes = int (soup.get("ep_end"))
@@ -104,7 +104,7 @@ def selectQuality (link):
     return dp[q]
 
 def getEmbeddedLink(Name, Ep):
-    url = f'https://gogoanime.pe/{Name}-episode-{Ep}' # impt link
+    url = f'{provider}/{Name}-episode-{Ep}' # impt link
     res = requests.get(url)
     soup = BeautifulSoup(res.content, "html5lib")
     soup = soup.findChild("li", class_="dowloads")
